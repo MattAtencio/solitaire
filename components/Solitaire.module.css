@@ -1,0 +1,379 @@
+.container {
+  width: 100%;
+  height: 100dvh;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 6px;
+  gap: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Header ─── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: #d4a853;
+  letter-spacing: 0.02em;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.headerBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ccc;
+  font-size: 0.75rem;
+  font-family: 'Outfit', sans-serif;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.headerBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.stat {
+  font-size: 0.72rem;
+  color: #999;
+  font-weight: 400;
+}
+
+.statVal {
+  color: #d4a853;
+  font-weight: 500;
+}
+
+/* ─── Top Row: Stock, Waste, Foundations ─── */
+.topRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.stockWaste {
+  grid-column: 1 / 3;
+  display: flex;
+  gap: 4px;
+}
+
+.foundations {
+  grid-column: 4 / 8;
+  display: flex;
+  gap: 4px;
+}
+
+/* ─── Tableau ─── */
+.tableau {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+}
+
+.column {
+  position: relative;
+  min-height: 100px;
+}
+
+/* ─── Card Slots (empty) ─── */
+.slot {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: 6px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slotLabel {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.stockSlot {
+  cursor: pointer;
+}
+
+.stockSlot:hover {
+  border-color: rgba(212, 168, 83, 0.4);
+}
+
+/* ─── Cards ─── */
+.card {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: 6px;
+  position: absolute;
+  left: 0;
+  background: #1a1a2e;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3px 4px;
+  cursor: grab;
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+  touch-action: none;
+  will-change: transform;
+  contain: layout style;
+}
+
+.card:hover {
+  border-color: rgba(212, 168, 83, 0.5);
+}
+
+.cardStatic {
+  position: relative;
+}
+
+.cardFaceDown {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f2340 50%, #1e3a5f 100%);
+  border-color: rgba(30, 58, 95, 0.6);
+  cursor: default;
+}
+
+.cardFaceDown::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 160, 255, 0.15);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(100, 160, 255, 0.06) 3px,
+    rgba(100, 160, 255, 0.06) 6px
+  );
+}
+
+.cardRed {
+  color: #ef4444;
+}
+
+.cardBlack {
+  color: #e8e8f0;
+}
+
+.cardCorner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.cardRank {
+  font-size: clamp(0.6rem, 2.2vw, 0.85rem);
+  font-weight: 600;
+}
+
+.cardSuit {
+  font-size: clamp(0.55rem, 2vw, 0.75rem);
+}
+
+.cardCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  opacity: 0.3;
+}
+
+.cardBottomCorner {
+  align-self: flex-end;
+  transform: rotate(180deg);
+}
+
+/* ─── Drag States ─── */
+.cardDragging {
+  z-index: 1000 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(212, 168, 83, 0.6);
+  cursor: grabbing;
+  transform: scale(1.04);
+  transition: none;
+  pointer-events: none;
+}
+
+.dropTarget {
+  border-color: rgba(212, 168, 83, 0.7) !important;
+  box-shadow: 0 0 12px rgba(212, 168, 83, 0.2);
+}
+
+/* ─── Waste pile spread ─── */
+.wasteContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+}
+
+/* ─── Win overlay ─── */
+.winOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.winModal {
+  background: #14142a;
+  border: 1.5px solid rgba(212, 168, 83, 0.4);
+  border-radius: 16px;
+  padding: 32px 40px;
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.winTitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: #d4a853;
+  margin-bottom: 8px;
+}
+
+.winStats {
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.winBtn {
+  background: linear-gradient(135deg, #d4a853, #b8922e);
+  border: none;
+  border-radius: 10px;
+  color: #0a0a14;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 28px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.winBtn:hover {
+  transform: scale(1.04);
+}
+
+/* ─── Auto-complete pulse ─── */
+.autoCompletable .card:last-child {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 8px rgba(212, 168, 83, 0.3); }
+}
+
+/* ─── Undo button ─── */
+.undoBtn {
+  composes: headerBtn;
+}
+
+.undoBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ─── Card move animation ─── */
+.cardAnimating {
+  transition: top 0.18s ease, left 0.18s ease;
+}
+
+/* ─── Foundation pile ─── */
+.foundationSlot {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: 6px;
+  border: 1.5px dashed rgba(212, 168, 83, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.foundationLabel {
+  font-size: 1rem;
+  color: rgba(212, 168, 83, 0.15);
+}
+
+/* ─── Double tap hint ─── */
+.autoMoveHint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(212, 168, 83, 0.15);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  color: #d4a853;
+  animation: fadeIn 0.5s ease;
+  pointer-events: none;
+}
+
+/* ─── responsive tweaks ─── */
+@media (max-height: 700px) {
+  .container {
+    padding: 4px 4px;
+    gap: 4px;
+  }
+  .header {
+    padding: 0 2px;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 521px) {
+  .card {
+    border-radius: 8px;
+  }
+  .slot, .foundationSlot {
+    border-radius: 8px;
+  }
+}

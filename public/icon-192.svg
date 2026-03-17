@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Dark background -->
+  <rect width="192" height="192" fill="#0a0a14"/>
+
+  <!-- Spade symbol (gold) -->
+  <g transform="translate(96, 96)">
+    <!-- Spade point (tip) -->
+    <path d="M 0 -50 L 25 -10 L 8 0 C 8 15 0 25 0 30 C 0 25 -8 15 -8 0 L -25 -10 Z"
+          fill="#d4a853"
+          stroke="#d4a853"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+
+    <!-- Spade stem -->
+    <rect x="-4" y="30" width="8" height="20"
+          fill="#d4a853"/>
+  </g>
+</svg>
