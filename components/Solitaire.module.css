@@ -307,6 +307,30 @@
   50% { box-shadow: 0 0 8px rgba(212, 168, 83, 0.3); }
 }
 
+/* ─── Guide button ─── */
+.guideBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d4a853;
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.guideBtn:hover {
+  background: rgba(212, 168, 83, 0.2);
+  border-color: rgba(212, 168, 83, 0.4);
+  color: #d4a853;
+}
+
 /* ─── Undo button ─── */
 .undoBtn {
   composes: headerBtn;

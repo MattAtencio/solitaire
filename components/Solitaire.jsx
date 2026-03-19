@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import Link from "next/link";
 import { createDeck, shuffleDeck, SUIT_SYMBOLS, SUIT_COLORS, RANK_VALUES, RANKS } from "@/data/cards";
 import styles from "./Solitaire.module.css";
 
@@ -503,6 +504,9 @@ export default function Solitaire() {
           <button className={styles.headerBtn} onClick={newGame}>
             New
           </button>
+          <Link href="/help" className={styles.guideBtn} aria-label="Help">
+            ?
+          </Link>
         </div>
       </div>
 
