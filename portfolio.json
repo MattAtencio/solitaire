@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/MattAtencio/portfolio/main/schemas/portfolio.schema.json",
+  "title": "Solitaire",
+  "tagline": "Classic Klondike Solitaire with drag & drop",
+  "description": "A fully-featured digital Klondike Solitaire game with smooth drag-and-drop card mechanics, undo functionality, move tracking, timer, and auto-complete. Features a polished dark UI with gold accents optimized for both desktop and mobile.",
+  "category": "games",
+  "status": "active",
+  "techStack": [
+    "Next.js",
+    "React 19",
+    "PWA",
+    "CSS Modules"
+  ],
+  "liveUrl": "https://solitaire.mattatencio.com",
+  "highlights": [
+    "Smooth drag-and-drop with visual feedback",
+    "Undo history, auto-complete, and double-tap moves",
+    "Installable PWA with offline support"
+  ],
+  "isPublic": true,
+  "startDate": "2025-01",
+  "featured": false
+}
