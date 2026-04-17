@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/MattAtencio/portfolio/main/schemas/project.schema.json",
+  "id": "solitaire",
+  "name": "Solitaire",
+  "kind": "project",
+  "type": "game",
+  "status": "active",
+  "group": "games-classics",
+  "tags": ["casual", "classic", "public"]
+}
